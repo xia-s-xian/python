@@ -91,7 +91,6 @@ print
 if __name__=="__main__":
    # revert_svn_mod()
     svn_checkout_mod()
-   # get_info()
    # revert_svn_ver(path_top_bt)
    
     print("END")
