@@ -1,0 +1,1 @@
+git@122.152.234.163:/home/ubuntu/git_store/python/python_example.git
