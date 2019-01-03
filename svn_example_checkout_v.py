@@ -89,7 +89,7 @@ def revert_svn_mod():
 
 print
 if __name__=="__main__":
-   # revert_svn_mod()
+    #revert_svn_mod()
     svn_checkout_mod()
    # revert_svn_ver(path_top_bt)
    

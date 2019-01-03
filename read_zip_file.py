@@ -30,5 +30,5 @@ if __name__ == "__main__":
     des=r'C:\Users\DELL\Desktop\FlashUpgradeTool'
     des_zipa=r'C:\Users\DELL\Desktop\FlashUpgradeTool.zip'
     des_zip_unzip=r'C:\Users\DELL\Desktop\新建文件夹 (2)'
-#    zip_file(des)
+    #zip_file(des)
     unzip_file(des_zipa ,des_zip_unzip)
