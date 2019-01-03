@@ -4,6 +4,8 @@ Main use to organize the python all module code
 
 note now learning and useful code
 
+`git repository`:[server](git@122.152.234.163:/home/ubuntu/git_store/python/python_example.git),[github](https://github.com/xia-s-xian/python.git)
+
 [TOC]
 
 ## folder and file operation
