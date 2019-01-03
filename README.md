@@ -6,7 +6,7 @@ note now learning and useful code
 
 [TOC]
 
-## folder and file operate=ion
+## folder and file operation
 
 create  
 
@@ -21,3 +21,13 @@ rename
 SVN checkout
 
 SVN updatae
+
+
+
+## SDK generate factory-project
+
+The project main to create a SDK package everyday ,the source code checkout from SVN .
+
+## issue:
+
+Why need to writing  account and  password when every times  push code to gitbub？
