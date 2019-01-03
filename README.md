@@ -30,4 +30,8 @@ The project main to create a SDK package everyday ,the source code checkout from
 
 ## issue:
 
-Why need to writing  account and  password when every times  push code to gitbub？
+Why need to writing  account and  password when every times  push code to github？
+
+## issue:
+
+Can not show the Tag when pull the code from github
