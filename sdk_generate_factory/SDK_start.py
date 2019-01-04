@@ -3,6 +3,8 @@
 
 import os
 import sys
+import datetime,platform
+import schedule,time
 sys.path+=["./Module"]
 
 import checkout_ver as checkout 
@@ -46,7 +48,7 @@ tuple=(url_top_bt,rev_top_bt,path_top_bt, \
        url_eck,rev_eck,path_eck,\
        )
 
-def generate_sdk():
+def generate_sdk(file_daily):
 
     checkout.check_out_handle(tuple)
     print("-----checkout end--------")
@@ -55,14 +57,24 @@ def generate_sdk():
     build_target_set.build_target(path_top_bt)
     print("-----build end--------")
 
-    file_daily="2018_01_03"
-
     sdk_generate.SDK_generate_main(file_daily)
     print("-----SDK generate end--------")
 
+def run_task():
+    now = datetime.datetime.now()
+    now_string=str(now)
+    file_name=now_string[0:10]
+    generate_sdk(file_name)
+
+def every_day(): 
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+schedule.every().day.at("15:40").do(run_task)
 
 if __name__=="__main__":
-    generate_sdk()
+    every_day()
 
     
 

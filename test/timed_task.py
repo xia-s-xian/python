@@ -9,8 +9,11 @@ import schedule,time
 
 def run_task():
     now = datetime.datetime.now()
-    print(now)
-
+    now_string=str(now)
+    file_name=now_string[0:10]
+    print(file_name)
+    
+'''
 def timer_fun(schecd_timer):
     flag=0
     while True:
@@ -22,13 +25,14 @@ def timer_fun(schecd_timer):
             if flag ==1:
                 schecd_timer=schecd_timer+datetime.timedelta(seconds=4)
                 flag=0
+'''
     
 def every_day(): 
     while True:
         schedule.run_pending()
         time.sleep(1)
 
-schedule.every().day.at("13:12").do(run_task)
+#schedule.every().day.at("15:40").do(run_task)
 schedule.every(4).seconds.do(run_task)
 
 if __name__ == "__main__":
