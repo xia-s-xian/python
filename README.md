@@ -37,3 +37,7 @@ Why need to writing  account and  password when every times  push code to github
 ## issue:
 
 Can not show the Tag when pull the code from github
+
+## issue:[#2](https://github.com/xia-s-xian/python/issues/2)
+
+decomposition the file construction

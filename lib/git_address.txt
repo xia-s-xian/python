@@ -1,2 +1,0 @@
-server:git@122.152.234.163:/home/ubuntu/git_store/python/python_example.git
-github:https://github.com/xia-s-xian/python.git
