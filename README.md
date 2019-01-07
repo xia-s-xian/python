@@ -30,6 +30,16 @@ SVN updatae
 
 The project main to create a SDK package everyday ,the source code checkout from SVN .
 
+## Python IDE use 
+
+python IDE can used to make code Timely effect.
+
+
+
+
+
+
+
 ## issue:
 
 Why need to writing  account and  password when every times  push code to github？
@@ -41,3 +51,16 @@ Can not show the Tag when pull the code from github
 ## issue:[#2](https://github.com/xia-s-xian/python/issues/2)
 
 decomposition the file construction
+
+## issue:
+
+vs code 安装python模块，[参考](https://jingyan.baidu.com/article/acf728fd6f0dbdf8e510a3a5.html
+)
+
+## issue:
+
+remove the folder
+
+## issue:
+
+report the SVN checkout  version

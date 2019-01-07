@@ -33,18 +33,11 @@ def zip_file(src_dir):
     z.close()
 
 #--------------------------------------------------------------------------#
-#Inter-file function call
-
-import sys
-import read_zip_file as zip_op
-sys.path.append(r'F:\8.ZGW\4_VA9638项目\18_集成发布\VA9638B_V8000_MultiCore\ReleaseMCUTop(modify).py')
-sys.path.append(r'C:\Users\DELL\Desktop\py_test_file\zip_file.py')
-
-zip_src=r"F:\8.ZGW\4_VA9638项目\18_集成发布\va9638br_coretop_20181222152058.zip"
-des_zip_unzip=r'C:\Users\DELL\Desktop\新建文件夹 (2)'
-zip_op.unzip_file(zip_src,des_zip_unzip)
+#delet folder
+#os.remove(path) 删除文件
+#path="文件路径"
+#shutil.rmtree(path)
 
 #--------------------------------------------------------------------------#
 
 if __name__ == "__main__":
-    every_day()

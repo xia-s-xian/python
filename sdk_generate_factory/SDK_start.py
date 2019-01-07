@@ -48,7 +48,17 @@ tuple=(url_top_bt,rev_top_bt,path_top_bt, \
        url_eck,rev_eck,path_eck,\
        )
 
+def delete_temp_checkout()
+    top="../check_out_code/va9638b"
+    multi_core="../check_out_code/VA9638B_V8000_MultiCore"
+    if os.path.exists(top):   # 判断存在
+        shutil.rmtree(top)
+    if os.path.exists(multi_core)
+        shutil.rmtree(top)
+        
 def generate_sdk(file_daily):
+    
+    delete_temp_checkout()
 
     checkout.check_out_handle(tuple)
     print("-----checkout end--------")
