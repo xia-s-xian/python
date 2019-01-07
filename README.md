@@ -64,3 +64,9 @@ remove the folder
 ## issue:
 
 report the SVN checkout  version
+
+##issue
+
+delete  folder 
+
+the path of delete folder need exit otherwise will report error

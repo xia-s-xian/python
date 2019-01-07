@@ -5,6 +5,7 @@ import os
 import sys
 import datetime,platform
 import schedule,time
+import shutil
 sys.path+=["./Module"]
 
 import checkout_ver as checkout 
@@ -48,13 +49,53 @@ tuple=(url_top_bt,rev_top_bt,path_top_bt, \
        url_eck,rev_eck,path_eck,\
        )
 
-def delete_temp_checkout()
+
+def DeleteSvnDir(delDirName):
+
+    if os.path.isfile(delDirName):
+        try :
+            #print (delDirName)
+            # 如果文件是只读类型，会弹出[WinError 5] 拒绝访问，所以修改文件的类型
+            os.chmod(delDirName, stat.S_IWRITE )
+            os.remove(delDirName)
+        except:
+            pass
+    elif os.path.isdir(delDirName):
+        for item in os.listdir(delDirName):
+            itemsrc = os.path.join(delDirName, item)
+            DeleteSvnDir(itemsrc)
+        try:
+            os.rmdir(delDirName)
+            #print (delDirName)
+        except:
+            #print (delDirName)
+            pass       
+
+def FindSvnDir(OrginPath):
+
+     for root, dirs, fileNames in os.walk(OrginPath):
+
+        for dirName in dirs:
+            if dirName == ".svn":
+                  delDirNameTemp = os.path.join(absolutPath, root)
+                  delDirName = os.path.join(delDirNameTemp, dirName)
+                  #print (delDirName)
+                  DeleteSvnDir(delDirName)
+            # 这里不用递归调用函数，因为os.walk函数就递归遍历了所有文件和文件夹
+            #else :
+                #FindSvnDir(dirName)
+            
+
+def delete_temp_checkout():
     top="../check_out_code/va9638b"
     multi_core="../check_out_code/VA9638B_V8000_MultiCore"
+    multi_core_svn="../check_out_code/VA9638B_V8000_MultiCore/.svn"
     if os.path.exists(top):   # 判断存在
-        shutil.rmtree(top)
-    if os.path.exists(multi_core)
-        shutil.rmtree(top)
+       shutil.rmtree(top)
+
+    FindSvnDir(multi_core_svn)
+    if os.path.exists(multi_core):
+        shutil.rmtree(multi_core)
         
 def generate_sdk(file_daily):
     
@@ -84,7 +125,10 @@ def every_day():
 schedule.every().day.at("15:40").do(run_task)
 
 if __name__=="__main__":
+    #delete_temp_checkout()
+    run_task()
     every_day()
+    
 
     
 
