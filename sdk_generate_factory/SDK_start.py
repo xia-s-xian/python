@@ -3,12 +3,14 @@
 
 import os
 import sys
+import stat
 import datetime,platform
 import schedule,time
 import shutil
+
 sys.path+=["./Module"]
 
-import checkout_ver as checkout 
+import checkout_ver as checkout
 import build as build_target_set
 import SDK_generate as sdk_generate
 #sys.path.append(r"../check_out_code/VA9638B_V8000_MultiCore/tools/build.py")
@@ -38,6 +40,10 @@ path_bluetunes="../check_out_code/For 9638"
 path_dsp_tools="../check_out_code/DSPTool"
 path_demoEQ="../check_out_code/DemoEQ"
 path_eck="../check_out_code/ECK"
+
+
+absolutPath_svn=r"../check_out_code/VA9638B_V8000_MultiCore"
+absolutPath = os.path.abspath(absolutPath_svn)
 
 #路径版本配置
 tuple=(url_top_bt,rev_top_bt,path_top_bt, \
@@ -72,7 +78,7 @@ def DeleteSvnDir(delDirName):
             pass       
 
 def FindSvnDir(OrginPath):
-
+    
      for root, dirs, fileNames in os.walk(OrginPath):
 
         for dirName in dirs:
@@ -89,13 +95,15 @@ def FindSvnDir(OrginPath):
 def delete_temp_checkout():
     top="../check_out_code/va9638b"
     multi_core="../check_out_code/VA9638B_V8000_MultiCore"
-    multi_core_svn="../check_out_code/VA9638B_V8000_MultiCore/.svn"
+    multi_core_svn="C:/Users/DELL/Desktop/python/check_out_code/VA9638B_V8000_MultiCore"
     if os.path.exists(top):   # 判断存在
        shutil.rmtree(top)
-
-    FindSvnDir(multi_core_svn)
+    
+    print(absolutPath)                     
+    FindSvnDir(absolutPath)
+    
     if os.path.exists(multi_core):
-        shutil.rmtree(multi_core)
+       shutil.rmtree(multi_core)
         
 def generate_sdk(file_daily):
     
@@ -122,11 +130,12 @@ def every_day():
         schedule.run_pending()
         time.sleep(1)
 
-schedule.every().day.at("15:40").do(run_task)
+schedule.every().day.at("9:10").do(run_task)
 
 if __name__=="__main__":
     #delete_temp_checkout()
-    run_task()
+    #run_task()
+    #run_task()
     every_day()
     
 

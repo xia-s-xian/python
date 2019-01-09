@@ -4,7 +4,7 @@
 import os,sys
 import stat
 
-absolutPath = os.getcwd()
+absolutPath = os.getcwd() #该路径是指.svn所在文件夹
 
 def DeleteSvnDir(delDirName):
 
