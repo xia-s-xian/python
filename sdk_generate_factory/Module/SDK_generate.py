@@ -46,13 +46,14 @@ def fun_make_release_file(file_dir):
     mkdir(file3)
     file4 = targetpath+"/Code_SRC/MCUTOP"
     mkdir(file4)
-    file5 = targetpath+"/ECK"
+    file5 = targetpath+"/ECK_Image"
     mkdir(file5)
     file6 =targetpath+"/Tools"
     mkdir(file6)
     file7 = targetpath+"/Tools"
     mkdir(file7)
-    
+    file8 = targetpath+"/doc"
+    mkdir(file8)
     ''' 
     rep_s="F:/8.ZGW/4_VA9638项目/18_集成发布/daily_build_note/Public file/VA9638B Release Test_12_x.xlsx"
     
@@ -111,6 +112,9 @@ def fun_cp_files(file_dir):
     else:
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
+
+    des="../SDK/"+file_dir+"/Tools/BlueTones"  #重命名  
+    os.rename(tDir,des) 
 
     cDir="../check_out_code/DemoEQ"
     tDir="../SDK/"+file_dir+"/Tools/DemoEQ"

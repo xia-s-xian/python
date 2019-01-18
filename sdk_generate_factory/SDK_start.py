@@ -13,6 +13,8 @@ sys.path+=["./Module"]
 import checkout_ver as checkout
 import build as build_target_set
 import SDK_generate as sdk_generate
+import svn_deal as delete_svn_folder
+
 #sys.path.append(r"../check_out_code/VA9638B_V8000_MultiCore/tools/build.py")
 
 
@@ -24,6 +26,11 @@ url_dsp_tools='http://10.0.2.88/svn/VimcBT/Hawkeye/trunk/Release/MPTool/DSPTool'
 url_demoEQ='http://10.0.2.88/svn/VimcBT/Hawkeye/trunk/Release/MPTool/DemoEQ'
 url_eck='http://10.0.2.88/svn/VimcBT/VA9638B/ECK/Tri-Mode'
 
+url_dsp_comp="http://10.0.2.88/svn/VimcBT/Hawkeye/trunk/Release/MPTool/DSPTool"
+url_dfu_fro_4M = "http://10.0.2.88/svn/VimcBT/Hawkeye/trunk/Release/MPTool/MPFlashTool/V3.0_dfu_for_4M"
+url_sp_test_tool="http://10.0.2.88/svn/VimcBT/Hawkeye/trunk/Release/MPTool/SPTestTool2.0"
+
+
 ##默认情况下，版本设置为None，则pysvn将checkout svn 最新得版本，如果指定版本，checkou指定版本
 rev_top_bt = None
 rev_dsp = None
@@ -33,6 +40,10 @@ rev_dsp_tools = None
 rev_demoEQ = None
 rev_eck = None
 
+rev_dsp_comp = None
+rev_dfu_fro_4M = None
+rev_sp_test_tool= None
+
 path_top_bt="../check_out_code/VA9638B_V8000_MultiCore"
 path_dsp="../check_out_code/BTAudio_Digitalgain"
 path_mpflash3_0="../check_out_code/MPFlashTool"
@@ -41,9 +52,15 @@ path_dsp_tools="../check_out_code/DSPTool"
 path_demoEQ="../check_out_code/DemoEQ"
 path_eck="../check_out_code/ECK"
 
+path_dspcomp="../check_out_code/DSPComposite"
+path_dfu_fro_4M ="./check_out_code/MPFlashTool_dfu_for_4M"
+path_sp_test_tool ="./check_out_code/SPTestTool2.0"
 
 absolutPath_svn=r"../check_out_code/VA9638B_V8000_MultiCore"
-absolutPath = os.path.abspath(absolutPath_svn)
+multi_svn = os.path.abspath(absolutPath_svn)
+
+
+
 
 #路径版本配置
 tuple=(url_top_bt,rev_top_bt,path_top_bt, \
@@ -56,40 +73,6 @@ tuple=(url_top_bt,rev_top_bt,path_top_bt, \
        )
 
 
-def DeleteSvnDir(delDirName):
-
-    if os.path.isfile(delDirName):
-        try :
-            #print (delDirName)
-            # 如果文件是只读类型，会弹出[WinError 5] 拒绝访问，所以修改文件的类型
-            os.chmod(delDirName, stat.S_IWRITE )
-            os.remove(delDirName)
-        except:
-            pass
-    elif os.path.isdir(delDirName):
-        for item in os.listdir(delDirName):
-            itemsrc = os.path.join(delDirName, item)
-            DeleteSvnDir(itemsrc)
-        try:
-            os.rmdir(delDirName)
-            #print (delDirName)
-        except:
-            #print (delDirName)
-            pass       
-
-def FindSvnDir(OrginPath):
-    
-     for root, dirs, fileNames in os.walk(OrginPath):
-
-        for dirName in dirs:
-            if dirName == ".svn":
-                  delDirNameTemp = os.path.join(absolutPath, root)
-                  delDirName = os.path.join(delDirNameTemp, dirName)
-                  #print (delDirName)
-                  DeleteSvnDir(delDirName)
-            # 这里不用递归调用函数，因为os.walk函数就递归遍历了所有文件和文件夹
-            #else :
-                #FindSvnDir(dirName)
             
 
 def delete_temp_checkout():
@@ -99,16 +82,22 @@ def delete_temp_checkout():
     if os.path.exists(top):   # 判断存在
        shutil.rmtree(top)
     
-    print(absolutPath)                     
-    FindSvnDir(absolutPath)
+    print(multi_svn)                     
+    delete_svn_folder.FindSvnDir(multi_svn)
     
     if os.path.exists(multi_core):
        shutil.rmtree(multi_core)
-        
+
+def delete_sdk_svn_info():
+    print("a")
+    #delete_svn_folder.FindSvnDir()
+    #delete_svn_folder.FindSvnDir()
+
+
 def generate_sdk(file_daily):
     
     delete_temp_checkout()
-
+    
     checkout.check_out_handle(tuple)
     print("-----checkout end--------")
  
@@ -118,7 +107,7 @@ def generate_sdk(file_daily):
 
     sdk_generate.SDK_generate_main(file_daily)
     print("-----SDK generate end--------")
-
+    
 def run_task():
     now = datetime.datetime.now()
     now_string=str(now)
@@ -130,13 +119,14 @@ def every_day():
         schedule.run_pending()
         time.sleep(1)
 
-schedule.every().day.at("9:10").do(run_task)
+schedule.every().day.at("9:08").do(run_task)
 
+
+#注意：程序在执行的时候，相关文件和文件夹需要关闭，否则会失败
 if __name__=="__main__":
     #delete_temp_checkout()
-    #run_task()
-    #run_task()
-    every_day()
+    run_task()
+    #every_day()
     
 
     
