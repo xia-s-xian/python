@@ -1,7 +1,7 @@
 import os
 
-absolutPath_svn=r"../check_out_code/VA9638B_V8000_MultiCore"
-absolutPath = os.path.abspath(absolutPath_svn)
+#absolutPath_svn=r"../check_out_code/VA9638B_V8000_MultiCore"
+#absolutPath = os.path.abspath(absolutPath_svn)
 
 
 def DeleteSvnDir(delDirName):
@@ -31,7 +31,7 @@ def FindSvnDir(OrginPath):
 
         for dirName in dirs:
             if dirName == ".svn":
-                  delDirNameTemp = os.path.join(absolutPath, root)
+                  delDirNameTemp = os.path.join(OrginPath, root)
                   delDirName = os.path.join(delDirNameTemp, dirName)
                   #print (delDirName)
                   DeleteSvnDir(delDirName)

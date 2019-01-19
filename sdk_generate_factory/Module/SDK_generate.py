@@ -132,13 +132,6 @@ def fun_cp_files(file_dir):
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
 
-    cDir="../check_out_code/DSPComposite"
-    tDir="../SDK/"+file_dir+"/Tools/DSPComposite"
-    if os.path.exists(tDir):   # 判断存在
-        cp_f(cDir, tDir)
-    else:
-        shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
-        # shutil.copy(cDir, tDir)     # 不能copy目录
 
     cDir="../check_out_code/MPFlashTool_dfu_for_4M"
     tDir="../SDK/"+file_dir+"/Tools/MPFlashTool_dfu_for_4M"

@@ -96,9 +96,29 @@ def delete_temp_checkout_ver():
     if os.path.exists(multi_core):
        shutil.rmtree(multi_core)
 
-def delete_sdk_svn_info():
-    print("a")
-    #svn_deal.FindSvnDir()
+def delete_sdk_svn_info( ):
+    #print("a")
+    file_dir="2019-01-19"
+    mp="../SDK/"+file_dir+"/Tools/MPFlashTool3.0"
+    mp = os.path.abspath(mp)
+    print(mp)
+    svn_deal.FindSvnDir(mp)
+    
+    bluetoooth="../SDK/"+file_dir+"/Tools/BlueTones"
+    bluetoooth = os.path.abspath(bluetoooth)
+    svn_deal.FindSvnDir(bluetoooth)
+    
+    demoeq="../SDK/"+file_dir+"/Tools/DemoEQ"
+    demoeq = os.path.abspath(demoeq)
+    svn_deal.FindSvnDir(demoeq)
+    
+    svn_deal.FindSvnDir(demoeq)
+    dsp_composite="../SDK/"+file_dir+"/Tools/DSPComposite"
+    svn_deal.FindSvnDir(dsp_composite)
+    dfu_for_4M="../SDK/"+file_dir+"/Tools/MPFlashTool_dfu_for_4M"
+    svn_deal.FindSvnDir(dfu_for_4M)
+    sptest="../SDK/"+file_dir+"/Tools/SPTestTool2.0"
+    svn_deal.FindSvnDir(sptest)
     #svn_deal.FindSvnDir()
 
 
@@ -114,6 +134,9 @@ def generate_sdk(file_daily):
     print("-----build end--------")
 
     SDK_generate.SDK_generate_main(file_daily)
+
+    delete_sdk_svn_info(file_daily)
+    
     print("-----SDK generate end--------")
     
 def run_task():
@@ -135,7 +158,7 @@ if __name__=="__main__":
     #delete_temp_checkout_ver()
     run_task()
     #every_day()
-    
+    #delete_sdk_svn_info()
 
     
 
