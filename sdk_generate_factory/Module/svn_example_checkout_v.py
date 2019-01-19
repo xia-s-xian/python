@@ -46,7 +46,7 @@ def svn_checkout(url,path,rev=1):
     rev_num=pysvn.Revision( pysvn.opt_revision_kind.number, rev )
     rev_head=pysvn.Revision(pysvn.opt_revision_kind.head)
 
-    if(rev!=1)
+    if(rev!=1):
         rev=rev_num
     else:
         rev=rev_head

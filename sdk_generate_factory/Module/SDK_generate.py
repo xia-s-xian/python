@@ -83,7 +83,7 @@ def fun_copy_image(file_dir):
     shutil.copy(mass_pro_s,image_d)
     
     old_mass_pro_name="../SDK/"+file_dir+"/Code_Image/va9638b_bt_mass_pro_en.bin"
-    new_mass_pro_name="../SDK/"+file_dir+"/Code_Image/external_flash.bin"
+    new_mass_pro_name="../SDK/"+file_dir+"/Code_Image/ExtFlash.bin"
     os.rename(old_mass_pro_name,new_mass_pro_name)
 
 #copy debug_info
@@ -124,6 +124,38 @@ def fun_cp_files(file_dir):
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
 
+    cDir="../check_out_code/DSPComposite"
+    tDir="../SDK/"+file_dir+"/Tools/DSPComposite"
+    if os.path.exists(tDir):   # 判断存在
+        cp_f(cDir, tDir)
+    else:
+        shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
+        # shutil.copy(cDir, tDir)     # 不能copy目录
+
+    cDir="../check_out_code/DSPComposite"
+    tDir="../SDK/"+file_dir+"/Tools/DSPComposite"
+    if os.path.exists(tDir):   # 判断存在
+        cp_f(cDir, tDir)
+    else:
+        shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
+        # shutil.copy(cDir, tDir)     # 不能copy目录
+
+    cDir="../check_out_code/MPFlashTool_dfu_for_4M"
+    tDir="../SDK/"+file_dir+"/Tools/MPFlashTool_dfu_for_4M"
+    if os.path.exists(tDir):   # 判断存在
+        cp_f(cDir, tDir)
+    else:
+        shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
+        # shutil.copy(cDir, tDir)     # 不能copy目录
+
+    cDir="../check_out_code/SPTestTool2.0"
+    tDir="../SDK/"+file_dir+"/Tools/SPTestTool2.0"
+    if os.path.exists(tDir):   # 判断存在
+        cp_f(cDir, tDir)
+    else:
+        shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
+        # shutil.copy(cDir, tDir)     # 不能copy目录
+
     '''
     cDir="../check_out_code/Public file/doc"
     tDir="../SDK/"+file_dir+"/doc"
@@ -138,7 +170,7 @@ def fun_cp_files(file_dir):
 def fun_cp_eck(file_dir):
     
     cDir="../check_out_code/ECK"
-    tDir="../SDK/"+file_dir+"/ECK"
+    tDir="../SDK/"+file_dir+"/Eck_Image"
     if os.path.exists(tDir):   # 判断存在
         cp_f(cDir, tDir)
     else:
