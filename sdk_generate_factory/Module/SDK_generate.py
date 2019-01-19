@@ -236,12 +236,14 @@ def get_top_src(file_dir):
             os.remove(zip_path_file)
         
 def get_dsp_src(file_dir):
-    zip_dsp_path=r"../check_out_code/BTAudio_Digitalgain"  
-    zip_file(zip_dsp_path)
+    #zip_dsp_path=r"../check_out_code/BTAudio_Digitalgain"  
+    #zip_file(zip_dsp_path)
 
-    dsp_s="../check_out_code/BTAudio_Digitalgain.zip"
-    dsp_d="../SDK/"+file_dir+"/Code_SRC/DSP"
+    dsp_s="../check_out_code/BTAudio_Digitalgain"
+    dsp_d="../SDK/"+file_dir+"/Code_SRC/DSP/BTAudio_Digitalgain"
     shutil.copy(dsp_s,dsp_d)
+
+    
 
     os.remove(dsp_s)
 

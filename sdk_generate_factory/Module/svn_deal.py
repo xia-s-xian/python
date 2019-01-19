@@ -3,6 +3,7 @@ import os
 absolutPath_svn=r"../check_out_code/VA9638B_V8000_MultiCore"
 absolutPath = os.path.abspath(absolutPath_svn)
 
+
 def DeleteSvnDir(delDirName):
 
     if os.path.isfile(delDirName):
@@ -38,7 +39,7 @@ def FindSvnDir(OrginPath):
             #else :
                 #FindSvnDir(dirName)
 
-path=r"G:\doc\SDK\V8011\Tools\BlueTones"
+
 
 if __name__=="__main__":
-    FindSvnDir(path)                        
+    FindSvnDir(absolutPath)                        
