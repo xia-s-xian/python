@@ -9,6 +9,7 @@ import shutil                           #高级文件操作，主要用来文件
 sys.path+=["./Module"]
 import ReleaseMCUTop as get_top
 import zipfile
+import svn_deal as delete_svn
 
 def mkdir(path):
     folder=os.path.exists(path)
@@ -104,7 +105,9 @@ def fun_cp_files(file_dir):
         cp_f(cDir, tDir)
     else:
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
-       
+    absolutPath = os.path.abspath(tDir)
+    delete_svn.FindSvnDir(absolutPath)
+
     cDir="../check_out_code/For 9638"
     tDir="../SDK/"+file_dir+"/Tools/For 9638"
     if os.path.exists(tDir):   # 判断存在
@@ -115,6 +118,8 @@ def fun_cp_files(file_dir):
 
     des="../SDK/"+file_dir+"/Tools/BlueTones"  #重命名  
     os.rename(tDir,des) 
+    absolutPath = os.path.abspath(des)
+    delete_svn.FindSvnDir(absolutPath)
 
     cDir="../check_out_code/DemoEQ"
     tDir="../SDK/"+file_dir+"/Tools/DemoEQ"
@@ -123,6 +128,8 @@ def fun_cp_files(file_dir):
     else:
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
+    absolutPath = os.path.abspath(tDir)
+    delete_svn.FindSvnDir(absolutPath)
 
     cDir="../check_out_code/DSPComposite"
     tDir="../SDK/"+file_dir+"/Tools/DSPComposite"
@@ -131,7 +138,8 @@ def fun_cp_files(file_dir):
     else:
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
-
+    absolutPath = os.path.abspath(tDir)
+    delete_svn.FindSvnDir(absolutPath)
 
     cDir="../check_out_code/MPFlashTool_dfu_for_4M"
     tDir="../SDK/"+file_dir+"/Tools/MPFlashTool_dfu_for_4M"
@@ -140,6 +148,8 @@ def fun_cp_files(file_dir):
     else:
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
+    absolutPath = os.path.abspath(tDir)
+    delete_svn.FindSvnDir(absolutPath)
 
     cDir="../check_out_code/SPTestTool2.0"
     tDir="../SDK/"+file_dir+"/Tools/SPTestTool2.0"
@@ -148,7 +158,9 @@ def fun_cp_files(file_dir):
     else:
         shutil.copytree(cDir, tDir)   # 目标文件夹必须不存在
         # shutil.copy(cDir, tDir)     # 不能copy目录
-
+    absolutPath = os.path.abspath(tDir)
+    delete_svn.FindSvnDir(absolutPath)
+    
     '''
     cDir="../check_out_code/Public file/doc"
     tDir="../SDK/"+file_dir+"/doc"
@@ -234,12 +246,22 @@ def get_dsp_src(file_dir):
 
     dsp_s="../check_out_code/BTAudio_Digitalgain"
     dsp_d="../SDK/"+file_dir+"/Code_SRC/DSP/BTAudio_Digitalgain"
-    shutil.copy(dsp_s,dsp_d)
+    #shutil.copy(dsp_s,dsp_d)
 
+    if os.path.exists(dsp_d):   # 判断存在
+        cp_f(dsp_s, dsp_d)
+    else:
+        shutil.copytree(dsp_s, dsp_d)   # 目标文件夹必须不存在
+   
     
-
-    os.remove(dsp_s)
-
+    #os.remove(dsp_s)
+    absolutPath = os.path.abspath(dsp_d)
+    delete_svn.FindSvnDir(absolutPath)
+    
+    zip_file(dsp_d)
+    if os.path.exists(dsp_d):
+        shutil.rmtree(dsp_d)
+    
 def SDK_generate_main(daily_file_dir):
     fun_make_release_file(daily_file_dir)    #创建文件夹
     fun_copy_image(daily_file_dir)           #复制image
@@ -248,8 +270,7 @@ def SDK_generate_main(daily_file_dir):
 
     get_top_src(daily_file_dir)              #获得top_source
     get_dsp_src(daily_file_dir)              #获得dsp_source
-   
-     
+        
 if __name__=="__main__":
     #fun_make_release_file()
 

@@ -124,18 +124,18 @@ def delete_sdk_svn_info( ):
 
 def generate_sdk(file_daily):
     
-    #delete_temp_checkout_ver()
+    delete_temp_checkout_ver()
     
     checkout_ver.check_out_handle(tuple)
     print("-----checkout_ver end--------")
  
     root_dir=r".."
-    #build.build_target(path_top_bt)
+    build.build_target(path_top_bt)
     print("-----build end--------")
 
     SDK_generate.SDK_generate_main(file_daily)
 
-    delete_sdk_svn_info(file_daily)
+    #delete_sdk_svn_info(file_daily)
     
     print("-----SDK generate end--------")
     

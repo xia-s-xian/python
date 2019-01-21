@@ -5,7 +5,8 @@ import os,sys
 import stat
 
 #absolutPath = os.getcwd() #该路径是指.svn所在文件夹
-absolutPath=r"G:/doc/python/check_out_code/VA9638B_V8000_MultiCore"
+
+
 def DeleteSvnDir(delDirName):
 
     if os.path.isfile(delDirName):
@@ -40,5 +41,8 @@ def FindSvnDir(OrginPath):
             # 这里不用递归调用函数，因为os.walk函数就递归遍历了所有文件和文件夹
             #else :
                 #FindSvnDir(dirName)
+
+absolutPath=r"C:/Users/DELL/Desktop/python/check_out_code/SPTestTool2.0"
+
 #main
 FindSvnDir(absolutPath)

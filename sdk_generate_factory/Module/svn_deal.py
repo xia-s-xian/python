@@ -1,7 +1,10 @@
-import os
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
 
-#absolutPath_svn=r"../check_out_code/VA9638B_V8000_MultiCore"
-#absolutPath = os.path.abspath(absolutPath_svn)
+import os,sys
+import stat
+
+#absolutPath = os.getcwd() #该路径是指.svn所在文件夹
 
 
 def DeleteSvnDir(delDirName):
@@ -26,7 +29,7 @@ def DeleteSvnDir(delDirName):
             pass       
 
 def FindSvnDir(OrginPath):
-    
+
      for root, dirs, fileNames in os.walk(OrginPath):
 
         for dirName in dirs:
@@ -39,7 +42,7 @@ def FindSvnDir(OrginPath):
             #else :
                 #FindSvnDir(dirName)
 
-
+absolutPath=r"C:/Users/DELL/Desktop/python/SDK/2019-01-21/Tools/BlueTones"
 
 if __name__=="__main__":
-    FindSvnDir(absolutPath)                        
+    FindSvnDir(absolutPath)
