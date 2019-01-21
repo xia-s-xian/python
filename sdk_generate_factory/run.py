@@ -91,7 +91,7 @@ def delete_temp_checkout_ver():
        shutil.rmtree(top)
     
     #print(multi_svn)                     
-    #svn_deal.FindSvnDir(absolutPath)
+    svn_deal.FindSvnDir(absolutPath)
     
     if os.path.exists(multi_core):
        shutil.rmtree(multi_core)
