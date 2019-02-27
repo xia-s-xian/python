@@ -92,7 +92,7 @@ def delete_temp_checkout_ver():
     
     #print(multi_svn)                     
     svn_deal.FindSvnDir(absolutPath)
-    
+    svn_deal.FindSvnDir(absolutPath)
     if os.path.exists(multi_core):
        shutil.rmtree(multi_core)
 
@@ -138,20 +138,30 @@ def generate_sdk(file_daily):
     #delete_sdk_svn_info(file_daily)
     
     print("-----SDK generate end--------")
+    now = datetime.datetime.now()
+    print(now)
+
+    input()
     
 def run_task():
     now = datetime.datetime.now()
+    print(now)
     now_string=str(now)
-    file_name=now_string[0:10]
-    generate_sdk(file_name)
+    file_name=now_string[0:18]
+    file_name1=file_name.replace(" ","_")
+    file_name2=file_name1.replace(":","_")
+    
+    generate_sdk(file_name2)
 
 def every_day(): 
     while True:
         schedule.run_pending()
         time.sleep(1)
 
-schedule.every().day.at("9:08").do(run_task)
-
+#schedule.every().day.at("9:00").do(run_task)
+#schedule.every().day.at("10:50").do(run_task)
+schedule.every().day.at("11:00").do(run_task)
+#schedule.every().day.at("16:18").do(run_task)
 
 #注意：程序在执行的时候，相关文件和文件夹需要关闭，否则会失败
 if __name__=="__main__":
@@ -159,6 +169,3 @@ if __name__=="__main__":
     run_task()
     #every_day()
     #delete_sdk_svn_info()
-
-    
-
